@@ -1,5 +1,5 @@
 class AppContainer {
-    meals = []
+    static meals = []
     ingredients = []
     url = "http://localhost:3000"
     dailyMealPlan = {}
