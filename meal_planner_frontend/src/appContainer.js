@@ -26,8 +26,9 @@ class AppContainer {
             mealOption.innerText = meal.name;
             if (meal.category === 'Breakfast') {
                 bfastSelect.appendChild(mealOption);
-            } else if (meal.category === 'Main') {
+            } else if (meal.category === 'Lunch') {
                 lunchSelect.appendChild(mealOption);
+            } else if (meal.category === 'Dinner') {
                 dinnerSelect.appendChild(mealOption);
             } else {
                 snackSelect.appendChild(mealOption);
