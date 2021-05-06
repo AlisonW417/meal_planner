@@ -3,10 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Meal Planner</title>
+    <script type="application/javascript" src="src/dailyMealPlan.js" charset="UTF-8"></script>
+    <script type="application/javascript" src="src/meal.js" charset="UTF-8"></script>
+    <script type="application/javascript" src="src/appContainer.js" charset="UTF-8"></script>
+    <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
   </head>
   <body>
     <h1>Create your weekly meal plan!</h1>
-    <div id="mealSelectors">
+    <div id="meal-selectors">
       <h2>Make meal selections and add them to the daily calendar below:</h2>
         <label for="breakfast">Breakfast:</label>
           <select id="breakfast"></select>
@@ -17,8 +21,21 @@
         <label for="snack">Snack:</label>
           <select id="snack"></select>
     </div>
-    <script type="application/javascript" src="src/meal.js" charset="UTF-8"></script>
-    <script type="application/javascript" src="src/appContainer.js" charset="UTF-8"></script>
-    <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+    <br>
+    <div id="meal-calendar">
+      <table>
+        <tbody id="daily-meals">
+          <tr>
+            <th><button id="sunday">Select Sunday Meals</button></th>
+            <th><button>Select Monday Meals</button></th>
+            <th><button>Select Tuesday Meals</button></th>
+            <th><button>Select Wednesday Meals</button></th>
+            <th><button>Select Thursday Meals</button></th>
+            <th><button>Select Friday Meals</button></th>
+            <th><button>Select Saturday Meals</button></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
