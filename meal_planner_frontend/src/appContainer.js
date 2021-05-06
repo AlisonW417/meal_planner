@@ -7,10 +7,32 @@ class AppContainer {
     getMeals() {
         fetch(`${this.url}/meals`)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => {
+            data.forEach(meal => {
+                new Meal(meal.name, meal.category, meal.ingredients);
+                
+            })
+        this.renderMeals();
+        })
     }
 
     renderMeals() {
+        const bfastSelect = document.getElementById('breakfast');
+        const lunchSelect = document.getElementById('lunch');
+        const dinnerSelect = document.getElementById('dinner');
+        const snackSelect = document.getElementById('snack');
+        AppContainer.meals.forEach(meal => {
+            const mealOption = document.createElement('option');
+            mealOption.innerText = meal.name;
+            if (meal.category === 'Breakfast') {
+                bfastSelect.appendChild(mealOption);
+            } else if (meal.category === 'Main') {
+                lunchSelect.appendChild(mealOption);
+                dinnerSelect.appendChild(mealOption);
+            } else {
+                snackSelect.appendChild(mealOption);
+            }
+        })
 
     }
 }
