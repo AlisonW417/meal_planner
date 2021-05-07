@@ -56,9 +56,8 @@ function renderMeals() {
 function displayMeals() {
     // let bfast = document.getElementById('breakfast');
     let selectedMeals = document.querySelectorAll('.selected-meal')
-    const mealCalendar = document.getElementById('daily-meals');
-    const mealRow = document.createElement('tr');
-
+    let mealCalendar = document.getElementById('daily-meals');
+    let mealRow = document.createElement('tr');
 
     selectedMeals.forEach(meal => {
         const currentMeals = document.createElement('td');
@@ -71,8 +70,8 @@ function displayMeals() {
 }
 
 function displayIngredients(selectedMeal) {
-    const groceries = document.getElementById('groceries');
-    const groceryList = document.createElement('ul');
+    let groceries = document.getElementById('groceries');
+    let groceryList = document.createElement('ul');
 
     meals.forEach(meal => {
         if (meal.name === selectedMeal && meal.ingredients != []) {
@@ -87,7 +86,3 @@ function displayIngredients(selectedMeal) {
     })    
 }
 
-// get elements by class in order to append all meal items at once
-// remove appContainer and dailyMealPlan classes?
-// make one button for updating meals and set to limit of 7 to populate meals
-// change direction of table? 

@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Meal Planner</title>
+
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+
     <script type="application/javascript" src="src/dailyMealPlan.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/meal.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/appContainer.js" charset="UTF-8"></script>
@@ -20,18 +27,25 @@
           <select id="dinner" class="selected-meal"></select>
         <label for="snack">Snack:</label>
           <select id="snack" class="selected-meal"></select>
+
+        <button id="select-meals">Add Meal to Calendar</button>
     </div>
     <br>
     <div id="meal-calendar">
+      
       <table>
         <tbody id="daily-meals">
           <tr>
-            <th><button id="select-meals">Add Meal to Calendar</button></th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+            <th>Snack</th>
           </tr>
         </tbody>
       </table>
     </div>
     <div id="groceries">
+      <h3>Grocery List</h3>
     </div>
   </body>
 </html>
