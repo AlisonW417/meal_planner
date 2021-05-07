@@ -5,5 +5,6 @@
 display ingredients in sorted order (add this later)
 create meal card div rather than using the table format
 
-updated routes in rails api
+updated routes in rails api (only the routes being used)
 
+add status and error handling to rails controllers? (video 7, 16:00 min mark)

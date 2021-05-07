@@ -11,18 +11,22 @@ const meals = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM is Loaded");
+
+    const newMealForm = document.getElementById("new-meal-form");
+    newMealForm.addEventListener('submit', createNewMeal);
+
     getMeals()
 
     const selectBtn = document.getElementById("select-meals");
     selectBtn.addEventListener('click', displayMeals);
-
-    const newMealForm = document.getElementById("new-meal-form");
-    newMealForm.addEventListener('submit', createNewMeal);
 })
 
 function createNewMeal(event){
     // debugger
     event.preventDefault();
+    // const newMealName = event.target.meal.value;
+    // const newMealCat = event.target.category.options.value;
+    // debugger
     fetch(`${url}/meals`, {
         method: 'POST',
         headers: {
@@ -30,11 +34,18 @@ function createNewMeal(event){
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-
+            name: event.target.name.value,
+            category: event.target.category.value,
+            ingredient: event.target.ingredient.value
         })
     })
     .then(resp => resp.json())
-    .then(data => console.log(data));
+    .then(data => {
+        // debugger
+        new Meal(data.name, data.category, data.ingredients)
+        meals.push(data)
+        renderMeals();
+    })
 }
 
 function getMeals() {
@@ -54,6 +65,10 @@ function renderMeals() {
     const lunchSelect = document.getElementById('lunch');
     const dinnerSelect = document.getElementById('dinner');
     const snackSelect = document.getElementById('snack');
+    bfastSelect.innerHTML = "";
+    lunchSelect.innerHTML = "";
+    dinnerSelect.innerHTML = "";
+    snackSelect.innerHTML = "";
     meals.forEach(meal => {
         const mealOption = document.createElement('option');
         mealOption.innerText = meal.name;
