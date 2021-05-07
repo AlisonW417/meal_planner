@@ -51,12 +51,14 @@ function renderMeals() {
 
 function displayMeals() {
     let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
     const mealCalendar = document.getElementById('daily-meals');
     const mealRow = document.createElement('tr');
+    // debugger
+    // let bfast = document.getElementById('breakfast');
+    // let bfast = document.getElementById('breakfast');
+    // let bfast = document.getElementById('breakfast');
+    // let bfast = document.getElementById('breakfast');
+
     const sunMeals = document.createElement('td');
     sunMeals.innerText = `${bfast.options[bfast.selectedIndex].value}`;
     mealRow.appendChild(sunMeals);
