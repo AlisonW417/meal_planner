@@ -4,3 +4,6 @@
 // change direction of table? 
 display ingredients in sorted order (add this later)
 create meal card div rather than using the table format
+
+updated routes in rails api
+

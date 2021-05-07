@@ -17,6 +17,22 @@
   </head>
   <body>
     <h1>Create your weekly meal plan!</h1>
+    <div id="create-meal">
+      <h2>Create a New Meal</h2>
+      <form id="new-meal-form">
+        <label for="name">Meal Name:</label>
+        <input type="text">
+        <select id="category">
+          <option>Breakfast</option>
+          <option>Lunch</option>
+          <option>Dinner</option>
+          <option>Snack</option>
+        </select>
+        <label for="ingredients">Ingredients:</label>
+        <input type="text">
+        <input type="submit">
+      </form>
+    </div>
     <div id="meal-selectors">
       <h2>Make meal selections and add them to the daily calendar below:</h2>
         <label for="breakfast">Breakfast:</label>
@@ -27,7 +43,8 @@
           <select id="dinner" class="selected-meal"></select>
         <label for="snack">Snack:</label>
           <select id="snack" class="selected-meal"></select>
-
+        <br>
+        <br>
         <button id="select-meals">Add Meal to Calendar</button>
     </div>
     <br>

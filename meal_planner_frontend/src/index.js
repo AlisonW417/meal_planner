@@ -8,7 +8,6 @@
 // app.bindEventListeners()
 const url = 'http://localhost:3000';
 const meals = [];
-const daily_menus = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM is Loaded");
@@ -17,9 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectBtn = document.getElementById("select-meals");
     selectBtn.addEventListener('click', displayMeals);
 
-    // const groceryBtn = document.getElementById("gocery-list");
-    // groceryBtn.addEventListener('click', displayIngredients);
+    const newMealForm = document.getElementById("new-meal-form");
+    newMealForm.addEventListener('submit', createNewMeal);
 })
+
+function createNewMeal(event){
+    debugger
+    event.preventDefault
+
+}
 
 function getMeals() {
     fetch(`${url}/meals`)
