@@ -21,9 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function createNewMeal(event){
-    debugger
-    event.preventDefault
+    // debugger
+    event.preventDefault();
+    fetch(`${url}/meals`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
 
+        })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data));
 }
 
 function getMeals() {
