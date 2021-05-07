@@ -50,19 +50,22 @@ function renderMeals() {
 }
 
 function displayMeals() {
-    let bfast = document.getElementById('breakfast');
+    // let bfast = document.getElementById('breakfast');
+    let selectedMeals = document.querySelectorAll('.selected-meal')
     const mealCalendar = document.getElementById('daily-meals');
     const mealRow = document.createElement('tr');
-    // debugger
-    // let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
-    // let bfast = document.getElementById('breakfast');
 
-    const sunMeals = document.createElement('td');
-    sunMeals.innerText = `${bfast.options[bfast.selectedIndex].value}`;
-    mealRow.appendChild(sunMeals);
-    mealCalendar.appendChild(mealRow);
+    selectedMeals.forEach(meal => {
+        const currentMeals = document.createElement('td');
+        currentMeals.innerText = `${meal.options[meal.selectedIndex].value}`;
+        mealRow.appendChild(currentMeals);
+        mealCalendar.appendChild(mealRow);
+    })
+    // debugger
+    // const sunMeals = document.createElement('td');
+    // sunMeals.innerText = `${bfast.options[bfast.selectedIndex].value}`;
+    // mealRow.appendChild(sunMeals);
+    // mealCalendar.appendChild(mealRow);
 }
 
 // get elements by class in order to append all meal items at once
