@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sunBtn.addEventListener('click', displayMeals);
 })
 
-
-
 function getMeals() {
     fetch(`${url}/meals`)
     .then(resp => resp.json())
@@ -64,3 +62,6 @@ function displayMeals() {
     mealRow.appendChild(sunMeals);
     mealCalendar.appendChild(mealRow);
 }
+
+// get elements by class in order to append all meal items at once
+// remove appContainer and dailyMealPlan classes?
