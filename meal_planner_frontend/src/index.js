@@ -22,11 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function createNewMeal(event){
-    // debugger
     event.preventDefault();
-    // const newMealName = event.target.meal.value;
-    // const newMealCat = event.target.category.options.value;
-    // debugger
     fetch(`${url}/meals`, {
         method: 'POST',
         headers: {
@@ -41,7 +37,6 @@ function createNewMeal(event){
     })
     .then(resp => resp.json())
     .then(data => {
-        // debugger
         new Meal(data.name, data.category, data.ingredients)
         meals.push(data)
         renderMeals();
@@ -56,7 +51,7 @@ function getMeals() {
             new Meal(meal.name, meal.category, meal.ingredients);
             meals.push(meal);  
         })
-    this.renderMeals();
+    renderMeals();
     })
 }
 
@@ -85,7 +80,6 @@ function renderMeals() {
 }
 
 function displayMeals() {
-    // let bfast = document.getElementById('breakfast');
     let selectedMeals = document.querySelectorAll('.selected-meal')
     let mealCalendar = document.getElementById('daily-meals');
     let mealRow = document.createElement('tr');
@@ -108,7 +102,6 @@ function displayIngredients(selectedMeal) {
         if (meal.name === selectedMeal && meal.ingredients != []) {
             meal.ingredients.forEach(ingredient => {
                 const groceryItem = document.createElement('li');
-                // debugger
                 groceryItem.innerText = `${ingredient.name} - ${ingredient.amount}`
                 groceryList.appendChild(groceryItem);
                 groceries.appendChild(groceryList);
