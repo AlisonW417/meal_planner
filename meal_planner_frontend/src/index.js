@@ -8,13 +8,17 @@
 // app.bindEventListeners()
 const url = 'http://localhost:3000';
 const meals = [];
+const daily_menus = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM is Loaded");
     getMeals()
 
-    const sunBtn = document.getElementById("sunday");
-    sunBtn.addEventListener('click', displayMeals);
+    const selectBtn = document.getElementById("select-meals");
+    selectBtn.addEventListener('click', displayMeals);
+
+    // const groceryBtn = document.getElementById("gocery-list");
+    // groceryBtn.addEventListener('click', displayIngredients);
 })
 
 function getMeals() {
@@ -55,17 +59,32 @@ function displayMeals() {
     const mealCalendar = document.getElementById('daily-meals');
     const mealRow = document.createElement('tr');
 
+
     selectedMeals.forEach(meal => {
         const currentMeals = document.createElement('td');
-        currentMeals.innerText = `${meal.options[meal.selectedIndex].value}`;
+        const selectedMeal = meal.options[meal.selectedIndex].value
+        currentMeals.innerText = selectedMeal;
         mealRow.appendChild(currentMeals);
         mealCalendar.appendChild(mealRow);
+        displayIngredients(selectedMeal);
     })
-    // debugger
-    // const sunMeals = document.createElement('td');
-    // sunMeals.innerText = `${bfast.options[bfast.selectedIndex].value}`;
-    // mealRow.appendChild(sunMeals);
-    // mealCalendar.appendChild(mealRow);
+}
+
+function displayIngredients(selectedMeal) {
+    const groceries = document.getElementById('groceries');
+    const groceryList = document.createElement('ul');
+
+    meals.forEach(meal => {
+        if (meal.name === selectedMeal && meal.ingredients != []) {
+            meal.ingredients.forEach(ingredient => {
+                const groceryItem = document.createElement('li');
+                // debugger
+                groceryItem.innerText = `${ingredient.name} - ${ingredient.amount}`
+                groceryList.appendChild(groceryItem);
+                groceries.appendChild(groceryList);
+            })
+        }
+    })    
 }
 
 // get elements by class in order to append all meal items at once
