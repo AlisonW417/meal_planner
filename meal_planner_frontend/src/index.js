@@ -1,8 +1,3 @@
-// const BACKEND_URL = 'http://localhost:3000/';
-// fetch(`${BACKEND_URL}/test`)
-//   .then(response => response.json())
-//   .then(parsedResponse => console.log(parsedResponse));
-
 // const app = new AppContainer
 // app.getMeals()
 // app.bindEventListeners()
@@ -101,7 +96,7 @@ function displayMeals() {
 
 function displayIngredients(selectedMeal) {
     let groceries = document.getElementById('groceries');
-    let groceryList = document.createElement('ul');
+    let groceryList = document.getElementById('grocery-list')
 
     meals.forEach(meal => {
         if (meal.name === selectedMeal && meal.ingredients != []) {
@@ -115,16 +110,15 @@ function displayIngredients(selectedMeal) {
                 
                 groceryItem.appendChild(deleteBtn);
                 groceryList.appendChild(groceryItem);
-                groceries.appendChild(groceryList);
 
                 deleteBtn.addEventListener('click', deleteIngredient);
             })
         }
-    })    
+    }) 
+    groceries.appendChild(groceryList);   
 }
 
 function deleteIngredient(event) {
-    debugger
     event.preventDefault();
     fetch(`${url}/ingredients/${event.target.dataset.ingredientId}`, {
         method: 'DELETE',
