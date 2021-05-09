@@ -11,4 +11,5 @@ class MealsController < ApplicationController
         # need to refactor this
         render json: meal, include: [:ingredients]
     end 
+
 end

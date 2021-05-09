@@ -1,8 +1,9 @@
 NEXT TIME: start at video 8, 33:10
 Priorities:
+- decide on and execute 3rd fetch request (give options to delete meal for list)
+- update form to allow for additional ingredients and double check rails controller code for create
 - set limit for select meal button to 7 times(1 week of meals)
 - consider refactoring make meals populate as dialy meal cards rather than current table layout -- or change table direction? need to denote day of the week.
-- decide on and execute 3rd fetch request (give options to delete meal for list)
 - add ingredients to all seed data (check on null result in grocery list)
 
 Hopes:

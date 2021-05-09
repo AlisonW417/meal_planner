@@ -86,9 +86,14 @@ function displayMeals() {
 
     selectedMeals.forEach(meal => {
         const currentMeals = document.createElement('td');
+        // const deleteBtn = document.createElement('button');
         const selectedMeal = meal.options[meal.selectedIndex].value
+        
         currentMeals.innerText = selectedMeal;
+        // deleteBtn.innerText = "Delete";
+        // deleteBtn.setAttribute('id', 'delete-meal');
         mealRow.appendChild(currentMeals);
+        // currentMeals.appendChild(deleteBtn);
         mealCalendar.appendChild(mealRow);
         displayIngredients(selectedMeal);
     })
@@ -101,12 +106,32 @@ function displayIngredients(selectedMeal) {
     meals.forEach(meal => {
         if (meal.name === selectedMeal && meal.ingredients != []) {
             meal.ingredients.forEach(ingredient => {
+                const deleteBtn = document.createElement('button');
                 const groceryItem = document.createElement('li');
                 groceryItem.innerText = `${ingredient.name} - ${ingredient.amount}`
+                deleteBtn.innerText = "Delete";
+                deleteBtn.setAttribute('data-ingredient-id', ingredient.id)
+                deleteBtn.setAttribute('id', 'delete-ingredient');
+                
+                groceryItem.appendChild(deleteBtn);
                 groceryList.appendChild(groceryItem);
                 groceries.appendChild(groceryList);
+
+                deleteBtn.addEventListener('click', deleteIngredient);
             })
         }
     })    
 }
 
+function deleteIngredient(event) {
+    debugger
+    event.preventDefault();
+    fetch(`${url}/ingredients/${event.target.dataset.ingredientId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    event.target.parentElement.remove();
+}
