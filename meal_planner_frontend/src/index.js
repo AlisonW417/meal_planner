@@ -109,6 +109,7 @@ function displayBreakfast(){
             breakfastDiv.appendChild(ingredientList);
         }
     })
+    loadIngredientForm(breakfastDiv);
 }
 
 function displayLunch(){
@@ -129,6 +130,75 @@ function displayLunch(){
             lunchDiv.appendChild(ingredientList);
         }
     })
+    loadIngredientForm(lunchDiv);
+}
+
+function displayDinner(){
+    let dinnerDiv = document.getElementById('dinner');
+    let selectedMeal = document.querySelector('#selected-dinner')
+    let selectedDinner = selectedMeal.options[selectedMeal.selectedIndex].value
+    meals.forEach(meal => {
+        if (meal.name === selectedDinner && meal.ingredients != []) {
+            mealName = document.createElement('h4');
+            mealName.innerText = `${meal.name}`;
+            ingredientList = document.createElement('ul');
+            meal.ingredients.forEach(ingredient => {
+                mealIngredient = document.createElement('li');
+                mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
+                ingredientList.appendChild(mealIngredient)
+            })
+            dinnerDiv.appendChild(mealName);
+            dinnerDiv.appendChild(ingredientList);
+        }
+    })
+    loadIngredientForm(dinnerDiv);
+}
+
+function displaySnack(){
+    let snackDiv = document.getElementById('snack');
+    let selectedMeal = document.querySelector('#selected-snack')
+    let selectedSnack = selectedMeal.options[selectedMeal.selectedIndex].value
+    meals.forEach(meal => {
+        if (meal.name === selectedSnack && meal.ingredients != []) {
+            mealName = document.createElement('h4');
+            mealName.innerText = `${meal.name}`;
+            ingredientList = document.createElement('ul');
+            meal.ingredients.forEach(ingredient => {
+                mealIngredient = document.createElement('li');
+                mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
+                ingredientList.appendChild(mealIngredient)
+            })
+            snackDiv.appendChild(mealName);
+            snackDiv.appendChild(ingredientList);
+        }
+    })
+    loadIngredientForm(snackDiv);
+}
+
+function loadIngredientForm(currentDiv) {
+    let ingredientForm = document.createElement('form');
+    let formHead = document.createElement('h5');
+    let nameLabel = document.createElement('label');
+    let nameInput = document.createElement('input');
+    let amtLabel = document.createElement('label');
+    let amtInput = document.createElement('input');
+    let button = document.createElement('button');
+    button.setAttribute('type', 'submit');
+    button.innerText = "Add";
+    nameInput.setAttribute('type', 'text');
+    nameInput.setAttribute('name', 'name');
+    amtInput.setAttribute('type', 'text');
+    amtInput.setAttribute('name', 'amount');
+    nameLabel.innerText = "Name:";
+    amtLabel.innerText = "Amount:";
+    formHead.innerText = "Add an ingredient";
+    ingredientForm.appendChild(formHead);
+    ingredientForm.appendChild(nameLabel);
+    ingredientForm.appendChild(nameInput);
+    ingredientForm.appendChild(amtLabel);
+    ingredientForm.appendChild(amtInput);
+    ingredientForm.appendChild(button);
+    currentDiv.appendChild(ingredientForm);
 }
 
 
