@@ -94,6 +94,7 @@ function displayBreakfast(){
             mealName = document.createElement('h4');
             mealName.innerText = `${meal.name}`;
             ingredientList = document.createElement('ul');
+            ingredientList.setAttribute('id', 'breakfast-ingredient-list')
             meal.ingredients.forEach(ingredient => {
                 mealIngredient = document.createElement('li');
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
@@ -103,7 +104,7 @@ function displayBreakfast(){
             breakfastDiv.appendChild(ingredientList);
         }
     })
-    loadIngredientForm(breakfastDiv);
+    loadIngredientForm(breakfastDiv, selectedBreakfast);
 }
 
 function displayLunch(){
@@ -115,6 +116,7 @@ function displayLunch(){
             mealName = document.createElement('h4');
             mealName.innerText = `${meal.name}`;
             ingredientList = document.createElement('ul');
+            ingredientList.setAttribute('id', 'lunch-ingredient-list')
             meal.ingredients.forEach(ingredient => {
                 mealIngredient = document.createElement('li');
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
@@ -124,7 +126,7 @@ function displayLunch(){
             lunchDiv.appendChild(ingredientList);
         }
     })
-    loadIngredientForm(lunchDiv);
+    loadIngredientForm(lunchDiv, selectedLunch);
 }
 
 function displayDinner(){
@@ -136,6 +138,7 @@ function displayDinner(){
             mealName = document.createElement('h4');
             mealName.innerText = `${meal.name}`;
             ingredientList = document.createElement('ul');
+            ingredientList.setAttribute('id', 'dinner-ingredient-list')
             meal.ingredients.forEach(ingredient => {
                 mealIngredient = document.createElement('li');
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
@@ -145,7 +148,7 @@ function displayDinner(){
             dinnerDiv.appendChild(ingredientList);
         }
     })
-    loadIngredientForm(dinnerDiv);
+    loadIngredientForm(dinnerDiv, selectedDinner);
 }
 
 function displaySnack(){
@@ -157,6 +160,7 @@ function displaySnack(){
             mealName = document.createElement('h4');
             mealName.innerText = `${meal.name}`;
             ingredientList = document.createElement('ul');
+            ingredientList.setAttribute('id', 'snack-ingredient-list')
             meal.ingredients.forEach(ingredient => {
                 mealIngredient = document.createElement('li');
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
@@ -223,7 +227,23 @@ function createNewIngredient(event) {
     .then(resp => resp.json())
     .then(data => {
         console.log(data);
-        meals.find(meal => {return meal.id === data.meal_id}).ingredients.push(data);
+        meal = meals.find(meal => {return meal.id === data.meal_id});
+        meal.ingredients.push(data);
+        let ingredient = document.createElement('li');
+        ingredient.innerText = `${data.name} - ${data.amount}`;
+        if (meal.category === "Breakfast") {
+            let div = document.getElementById("breakfast-ingredient-list");
+            div.appendChild(ingredient);
+        } else if (meal.category === "Lunch") {
+            let div = document.getElementById("lunch-ingredient-list")
+            div.appendChild(ingredient);
+        } else if (meal.category === "Dinner") {
+            let div = document.getElementById("dinner-ingredient-list")
+            div.appendChild(ingredient);
+        } else {
+            let div = document.getElementById("snack-ingredient-list")
+            div.appendChild(ingredient);
+        }
     })
 }
 
