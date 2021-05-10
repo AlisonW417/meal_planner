@@ -68,10 +68,10 @@ function getMeals() {
 }
 
 function renderMeals() {
-    const bfastSelect = document.getElementById('breakfast');
-    const lunchSelect = document.getElementById('lunch');
-    const dinnerSelect = document.getElementById('dinner');
-    const snackSelect = document.getElementById('snack');
+    const bfastSelect = document.getElementById('selected-breakfast');
+    const lunchSelect = document.getElementById('selected-lunch');
+    const dinnerSelect = document.getElementById('selected-dinner');
+    const snackSelect = document.getElementById('selected-snack');
     bfastSelect.innerHTML = "";
     lunchSelect.innerHTML = "";
     dinnerSelect.innerHTML = "";
@@ -92,8 +92,8 @@ function renderMeals() {
 }
 
 function displayBreakfast(){
-    let breakfastDiv = document.getElementById('selected-breakfast');
-    let selectedMeal = document.querySelector('.selected-meal')
+    let breakfastDiv = document.getElementById('breakfast');
+    let selectedMeal = document.querySelector('#selected-breakfast')
     let selectedBreakfast = selectedMeal.options[selectedMeal.selectedIndex].value
     meals.forEach(meal => {
         if (meal.name === selectedBreakfast && meal.ingredients != []) {
@@ -107,6 +107,26 @@ function displayBreakfast(){
             })
             breakfastDiv.appendChild(mealName);
             breakfastDiv.appendChild(ingredientList);
+        }
+    })
+}
+
+function displayLunch(){
+    let lunchDiv = document.getElementById('lunch');
+    let selectedMeal = document.querySelector('#selected-lunch')
+    let selectedLunch = selectedMeal.options[selectedMeal.selectedIndex].value
+    meals.forEach(meal => {
+        if (meal.name === selectedLunch && meal.ingredients != []) {
+            mealName = document.createElement('h4');
+            mealName.innerText = `${meal.name}`;
+            ingredientList = document.createElement('ul');
+            meal.ingredients.forEach(ingredient => {
+                mealIngredient = document.createElement('li');
+                mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
+                ingredientList.appendChild(mealIngredient)
+            })
+            lunchDiv.appendChild(mealName);
+            lunchDiv.appendChild(ingredientList);
         }
     })
 }
