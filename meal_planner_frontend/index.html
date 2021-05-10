@@ -14,43 +14,72 @@
     <script type="application/javascript" src="src/meal.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/appContainer.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+
   </head>
+
   <body>
-    <h1>Create your weekly meal plan!</h1>
+    <h1>Plan your Daily Menu!</h1>
     <div id="create-meal">
       <h2>Create a New Meal</h2>
       <form id="new-meal-form">
         <label for="name">Meal Name:</label>
         <input type="text" name="name">
+
         <select id="category" name="category">
           <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
           <option value="Snack">Snack</option>
         </select>
-        <label for="ingredients">Ingredients:</label>
-        <input type="text" name="ingredient">
+
+        <!-- <label for="ingredients">Ingredients:</label>
+        <label for="ingredient-1-name">Name:</label>
+        <input type="text" name="ingredient1name">
+        <label for="ingredeint-1-amount">Amount:</label>
+        <input type="text" name="ingredient1amount">
+
+        <label for="ingredient-2-name">Name:</label>
+        <input type="text" name="ingredient2name">
+        <label for="ingredeint-2-amount">Amount:</label>
+        <input type="text" name="ingredient2amount"> -->
+
         <input type="submit">
       </form>
     </div>
+
     <div id="meal-selectors">
-      <h2>Make meal selections and add them to the daily calendar below:</h2>
+      <h2>Make meal selections and add them to the daily menu below:</h2>
+      <div id="selected-breakfast">
         <label for="breakfast">Breakfast:</label>
-          <select id="breakfast" class="selected-meal"></select>
-        <label for="lunch">Lunch:</label>
-          <select id="lunch" class="selected-meal"></select>
-        <label for="dinner">Dinner:</label>
-          <select id="dinner" class="selected-meal"></select>
-        <label for="snack">Snack:</label>
-          <select id="snack" class="selected-meal"></select>
+        <select id="breakfast" class="selected-meal"></select>
+        <button id="bfast-select">Select</button>
+      </div>
+
+      <div id="selected-lunch">
+        <label for="lunch">Lunch</label>
+        <select id="lunch" class="selected-meal"></select>
+        <button id="lunch-select">Select</button>
+      </div>
+
+      <div id="selected-dinner">
+        <label for="dinner">Dinner</label>
+        <select id="dinner" class="selected-meal"></select>
+        <button id="dinner-select">Select</button>
+      </div>
+
+      <div id="selected-snack"></div>
+        <label for="snack">Snack</label>
+        <select id="snack" class="selected-meal"></select>
+        <button id="snack-select">Select</button>
+      <div id="selected-snack">
+        <!-- <br>
         <br>
-        <br>
-        <button id="select-meals">Add Meals to Calendar</button>
+        <button id="select-meals">Add Meals to Calendar</button> -->
     </div>
+
     <br>
-    <div id="meal-calendar">
-      
-      <table>
+
+      <!-- <table>
         <tbody id="daily-meals">
           <tr>
             <th>Breakfast</th>
@@ -60,10 +89,12 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
+
     <div id="groceries">
       <h3>Grocery List</h3>
       <ul id="grocery-list"></ul>
     </div>
+
   </body>
 </html>

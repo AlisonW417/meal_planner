@@ -5,11 +5,11 @@ class MealsController < ApplicationController
     end 
 
     def create 
+        # raise params
         meal = Meal.new(name: params[:name], category: params[:category])
-        meal.ingredients.build(params[:ingredients])
         meal.save
         # need to refactor this
-        render json: meal, include: [:ingredients]
+        render json: meal
     end 
 
 end
