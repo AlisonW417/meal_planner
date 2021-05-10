@@ -12,4 +12,10 @@ class MealsController < ApplicationController
         render json: meal
     end 
 
+    def update
+        raise params
+        meal = Meal.find_by(id: params[:id])
+        
+    end 
+
 end

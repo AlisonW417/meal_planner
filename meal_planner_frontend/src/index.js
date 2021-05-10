@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function createNewMeal(event){
-    // debugger
     event.preventDefault();
     fetch(`${url}/meals`, {
         method: 'POST',
@@ -40,11 +39,6 @@ function createNewMeal(event){
         body: JSON.stringify({
             name: event.target.name.value,
             category: event.target.category.value,
-            // ingredients: {
-            //     name: event.target.ingredient1name.value,
-            //     amount: event.target.ingredient1amount.value
-            // }
-            // ingredient: event.target.ingredient.value
         })
     })
     .then(resp => resp.json())
@@ -172,10 +166,11 @@ function displaySnack(){
             snackDiv.appendChild(ingredientList);
         }
     })
-    loadIngredientForm(snackDiv);
+    loadIngredientForm(snackDiv, selectedSnack);
 }
 
-function loadIngredientForm(currentDiv) {
+function loadIngredientForm(currentDiv, selectedMeal) {
+    currentMeal = meals.find(meal => {return meal.name === selectedMeal});
     let ingredientForm = document.createElement('form');
     let formHead = document.createElement('h5');
     let nameLabel = document.createElement('label');
@@ -183,12 +178,19 @@ function loadIngredientForm(currentDiv) {
     let amtLabel = document.createElement('label');
     let amtInput = document.createElement('input');
     let button = document.createElement('button');
+    let hidden = document.createElement('input');
+    hidden.setAttribute('type', 'hidden');
+    hidden.setAttribute('name', 'meal');
+    hidden.setAttribute('value', currentMeal.id);
     button.setAttribute('type', 'submit');
+    button.setAttribute('class', 'add-ingredient');
     button.innerText = "Add";
     nameInput.setAttribute('type', 'text');
     nameInput.setAttribute('name', 'name');
     amtInput.setAttribute('type', 'text');
     amtInput.setAttribute('name', 'amount');
+    nameLabel.setAttribute('for', 'name');
+    amtLabel.setAttribute('for', 'amount');
     nameLabel.innerText = "Name:";
     amtLabel.innerText = "Amount:";
     formHead.innerText = "Add an ingredient";
@@ -197,10 +199,33 @@ function loadIngredientForm(currentDiv) {
     ingredientForm.appendChild(nameInput);
     ingredientForm.appendChild(amtLabel);
     ingredientForm.appendChild(amtInput);
+    ingredientForm.appendChild(hidden);
     ingredientForm.appendChild(button);
     currentDiv.appendChild(ingredientForm);
+    ingredientForm.addEventListener('submit', createNewIngredient);
 }
 
+function createNewIngredient(event) {
+    // debugger
+    event.preventDefault();
+    fetch(`${url}/ingredients`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: event.target.name.value,
+            amount: event.target.amount.value,
+            meal_id: event.target.meal.value
+        })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data);
+        meals.find(meal => {return meal.id === data.meal_id}).ingredients.push(data);
+    })
+}
 
 // ORIGINAL !!
 // function displayMeals() {
