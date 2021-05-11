@@ -34,4 +34,26 @@ class FormLoader {
         currentDiv.appendChild(ingredientForm);
         ingredientForm.addEventListener('submit', createNewIngredient);
     }
+
+    static loadMealPlanForm(currentDiv){
+        let mealPlanForm = document.createElement('form');
+        let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        days.forEach(day => {
+            let input = document.createElement('input');
+            let label = document.createElement('label');
+            label.setAttribute('for', `${day.toLowerCase()}`);
+            label.innerText = `${day}`;
+            input.setAttribute('type', 'checkbox');
+            input.setAttribute('id', `${day.toLowerCase()}`);
+            input.setAttribute('value', `${day.toLowerCase()}`);
+            mealPlanForm.appendChild(label);
+            mealPlanForm.appendChild(input);
+        })
+        let submit = document.createElement('button');
+        submit.setAttribute('type', 'submit');
+        submit.setAttribute('class', 'meal-plan');
+        submit.innerText = "Add to meal plan";
+        mealPlanForm.appendChild(submit);
+        currentDiv.appendChild(mealPlanForm);
+    }
 }

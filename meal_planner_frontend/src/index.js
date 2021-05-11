@@ -23,9 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const snackSelect = document.getElementById("snack-select");
     snackSelect.addEventListener('click', renderMealInfo);
-
-    // const selectBtn = document.getElementById("select-meals");
-    // selectBtn.addEventListener('click', displayMeals);
 })
 
 // READ MEALS
@@ -143,5 +140,6 @@ function renderMealInfo(event){
         }
     })
     FormLoader.loadIngredientForm(mealInfoDiv, selectedMeal);
+    FormLoader.loadMealPlanForm(mealInfoDiv);
 }
 
