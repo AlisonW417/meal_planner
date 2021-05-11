@@ -145,6 +145,13 @@ function renderMealInfo(event){
 
 function renderMealPlan(event) {
     event.preventDefault();
-    console.log(event);
+    let days = [];
+    let checkboxes = document.getElementsByClassName('checkbox');
+    for (let i=0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked){
+            days.push(checkboxes[i].value);
+        }
+    }
+    console.log(days);
 }
 

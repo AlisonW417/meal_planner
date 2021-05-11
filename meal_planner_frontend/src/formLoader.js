@@ -45,6 +45,7 @@ class FormLoader {
             label.innerText = `${day}`;
             input.setAttribute('type', 'checkbox');
             input.setAttribute('id', `${day.toLowerCase()}`);
+            input.setAttribute('class', 'checkbox');
             input.setAttribute('value', `${day.toLowerCase()}`);
             mealPlanForm.appendChild(label);
             mealPlanForm.appendChild(input);
