@@ -13,21 +13,35 @@ document.addEventListener('DOMContentLoaded', () => {
     getMeals()
 
     const bfastSelect = document.getElementById("bfast-select");
-    bfastSelect.addEventListener('click', displayBreakfast);
+    bfastSelect.addEventListener('click', renderMealInfo);
 
     const lunchSelect = document.getElementById("lunch-select");
-    lunchSelect.addEventListener('click', displayLunch);
+    lunchSelect.addEventListener('click', renderMealInfo);
 
     const dinnerSelect = document.getElementById("dinner-select");
-    dinnerSelect.addEventListener('click', displayDinner);
+    dinnerSelect.addEventListener('click', renderMealInfo);
 
     const snackSelect = document.getElementById("snack-select");
-    snackSelect.addEventListener('click', displaySnack);
+    snackSelect.addEventListener('click', renderMealInfo);
 
     // const selectBtn = document.getElementById("select-meals");
     // selectBtn.addEventListener('click', displayMeals);
 })
 
+// READ MEALS
+function getMeals() {
+    fetch(`${url}/meals`)
+    .then(resp => resp.json())
+    .then(data => {
+        data.forEach(meal => {
+            new Meal(meal.name, meal.category, meal.ingredients);
+            meals.push(meal);  
+        })
+    renderMeals();
+    })
+}
+
+// CREATE MEAL
 function createNewMeal(event){
     event.preventDefault();
     fetch(`${url}/meals`, {
@@ -50,18 +64,46 @@ function createNewMeal(event){
     })
 }
 
-function getMeals() {
-    fetch(`${url}/meals`)
+// CREATE INGREDIENT AND RENDER TO DOM
+function createNewIngredient(event) {
+    // debugger
+    event.preventDefault();
+    fetch(`${url}/ingredients`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: event.target.name.value,
+            amount: event.target.amount.value,
+            meal_id: event.target.meal.value
+        })
+    })
     .then(resp => resp.json())
     .then(data => {
-        data.forEach(meal => {
-            new Meal(meal.name, meal.category, meal.ingredients);
-            meals.push(meal);  
-        })
-    renderMeals();
+        console.log(data);
+        meal = meals.find(meal => {return meal.id === data.meal_id});
+        meal.ingredients.push(data);
+        let ingredient = document.createElement('li');
+        ingredient.innerText = `${data.name} - ${data.amount}`;
+        if (meal.category === "Breakfast") {
+            let div = document.getElementById("breakfast-ingredient-list");
+            div.appendChild(ingredient);
+        } else if (meal.category === "Lunch") {
+            let div = document.getElementById("lunch-ingredient-list")
+            div.appendChild(ingredient);
+        } else if (meal.category === "Dinner") {
+            let div = document.getElementById("dinner-ingredient-list")
+            div.appendChild(ingredient);
+        } else {
+            let div = document.getElementById("snack-ingredient-list")
+            div.appendChild(ingredient);
+        }
     })
 }
 
+// RENDER MEALS TO DOM
 function renderMeals() {
     const bfastSelect = document.getElementById('selected-breakfast');
     const lunchSelect = document.getElementById('selected-lunch');
@@ -86,7 +128,36 @@ function renderMeals() {
     })
 }
 
+function renderMealInfo(event){
+    // debugger
+    let parentDiv = document.getElementById(event.target.parentElement.id);
+    let mealInfoDiv = event.target.nextElementSibling;
+    mealInfoDiv.innerHTML = "";
+    let selectedMeal = event.target.previousElementSibling.value;
+    meals.forEach(meal => {
+        if (meal.name === selectedMeal) {
+            mealName = document.createElement('h4');
+            mealName.innerText = `${meal.name}`;
+            mealInfoDiv.appendChild(mealName);
+        }
+        if (meal.name === selectedMeal && meal.ingredients !== [] && meal.ingredients !== undefined) {
+            ingredientList = document.createElement('ul');
+            ingredientList.setAttribute('class', 'ingredient-list')
+            meal.ingredients.forEach(ingredient => {
+                mealIngredient = document.createElement('li');
+                mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
+                ingredientList.appendChild(mealIngredient)
+            })
+            mealInfoDiv.appendChild(ingredientList);
+            parentDiv.appendChild(mealInfoDiv);
+        }
+    })
+    loadIngredientForm(mealInfoDiv, selectedMeal);
+}
+
+// RENDER Selected Meal Info to DOM
 function displayBreakfast(){
+    // debugger
     let breakfastDiv = document.getElementById('breakfast');
     breakfastDiv.innerHTML = "";
     let selectedMeal = document.querySelector('#selected-breakfast')
@@ -221,44 +292,6 @@ function loadIngredientForm(currentDiv, selectedMeal) {
     ingredientForm.appendChild(button);
     currentDiv.appendChild(ingredientForm);
     ingredientForm.addEventListener('submit', createNewIngredient);
-}
-
-function createNewIngredient(event) {
-    // debugger
-    event.preventDefault();
-    fetch(`${url}/ingredients`, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            name: event.target.name.value,
-            amount: event.target.amount.value,
-            meal_id: event.target.meal.value
-        })
-    })
-    .then(resp => resp.json())
-    .then(data => {
-        console.log(data);
-        meal = meals.find(meal => {return meal.id === data.meal_id});
-        meal.ingredients.push(data);
-        let ingredient = document.createElement('li');
-        ingredient.innerText = `${data.name} - ${data.amount}`;
-        if (meal.category === "Breakfast") {
-            let div = document.getElementById("breakfast-ingredient-list");
-            div.appendChild(ingredient);
-        } else if (meal.category === "Lunch") {
-            let div = document.getElementById("lunch-ingredient-list")
-            div.appendChild(ingredient);
-        } else if (meal.category === "Dinner") {
-            let div = document.getElementById("dinner-ingredient-list")
-            div.appendChild(ingredient);
-        } else {
-            let div = document.getElementById("snack-ingredient-list")
-            div.appendChild(ingredient);
-        }
-    })
 }
 
 // ORIGINAL !!

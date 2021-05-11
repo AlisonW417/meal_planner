@@ -5,7 +5,9 @@ Priorities:
 - consider refactoring make meals populate as dialy meal cards rather than current table layout -- or change table direction? need to denote day of the week.
 - add ingredients to all seed data (check on null result in grocery list)
 - meal and ingredient form fields on submit
-- refactor meal displays to be more abstract? create separate classes for categories?
+- refactor meal displays to be more abstract? create separate classes for categories? THINK DRY
+- add basic data validation to rails api
+- research how to handle form creation with JS
 
 Hopes:
 - change ingredient display (allow sorting)
