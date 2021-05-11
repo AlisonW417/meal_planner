@@ -43,7 +43,8 @@ function createNewMeal(event){
     })
     .then(resp => resp.json())
     .then(data => {
-        new Meal(data.name, data.category)
+        console.log(data);
+        new Meal(data.name, data.category, data.ingredients)
         meals.push(data)
         renderMeals();
     })
@@ -87,12 +88,16 @@ function renderMeals() {
 
 function displayBreakfast(){
     let breakfastDiv = document.getElementById('breakfast');
+    breakfastDiv.innerHTML = "";
     let selectedMeal = document.querySelector('#selected-breakfast')
     let selectedBreakfast = selectedMeal.options[selectedMeal.selectedIndex].value
     meals.forEach(meal => {
-        if (meal.name === selectedBreakfast && meal.ingredients != []) {
+        if (meal.name === selectedBreakfast) {
             mealName = document.createElement('h4');
-            mealName.innerText = `${meal.name}`;
+            mealName.innerText = `${meal.name}`;  
+            breakfastDiv.appendChild(mealName); 
+        }
+        if (meal.name === selectedBreakfast && meal.ingredients !== [] && meal.ingredients !== undefined) {
             ingredientList = document.createElement('ul');
             ingredientList.setAttribute('id', 'breakfast-ingredient-list')
             meal.ingredients.forEach(ingredient => {
@@ -100,7 +105,6 @@ function displayBreakfast(){
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
                 ingredientList.appendChild(mealIngredient)
             })
-            breakfastDiv.appendChild(mealName);
             breakfastDiv.appendChild(ingredientList);
         }
     })
@@ -109,12 +113,16 @@ function displayBreakfast(){
 
 function displayLunch(){
     let lunchDiv = document.getElementById('lunch');
+    lunchDiv.innerHTML = "";
     let selectedMeal = document.querySelector('#selected-lunch')
     let selectedLunch = selectedMeal.options[selectedMeal.selectedIndex].value
     meals.forEach(meal => {
-        if (meal.name === selectedLunch && meal.ingredients != []) {
+        if (meal.name === selectedLunch) {
             mealName = document.createElement('h4');
-            mealName.innerText = `${meal.name}`;
+            mealName.innerText = `${meal.name}`;  
+            lunchDiv.appendChild(mealName); 
+        }
+        if (meal.name === selectedLunch && meal.ingredients !== [] && meal.ingredients !== undefined) {
             ingredientList = document.createElement('ul');
             ingredientList.setAttribute('id', 'lunch-ingredient-list')
             meal.ingredients.forEach(ingredient => {
@@ -122,7 +130,6 @@ function displayLunch(){
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
                 ingredientList.appendChild(mealIngredient)
             })
-            lunchDiv.appendChild(mealName);
             lunchDiv.appendChild(ingredientList);
         }
     })
@@ -131,12 +138,17 @@ function displayLunch(){
 
 function displayDinner(){
     let dinnerDiv = document.getElementById('dinner');
+    dinnerDiv.innerHTML = "";
     let selectedMeal = document.querySelector('#selected-dinner')
     let selectedDinner = selectedMeal.options[selectedMeal.selectedIndex].value
     meals.forEach(meal => {
-        if (meal.name === selectedDinner && meal.ingredients != []) {
+        // debugger
+        if (meal.name === selectedDinner) {
             mealName = document.createElement('h4');
-            mealName.innerText = `${meal.name}`;
+            mealName.innerText = `${meal.name}`;  
+            dinnerDiv.appendChild(mealName); 
+        }
+        if (meal.name === selectedDinner && meal.ingredients !== [] && meal.ingredients !== undefined) {
             ingredientList = document.createElement('ul');
             ingredientList.setAttribute('id', 'dinner-ingredient-list')
             meal.ingredients.forEach(ingredient => {
@@ -144,7 +156,6 @@ function displayDinner(){
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
                 ingredientList.appendChild(mealIngredient)
             })
-            dinnerDiv.appendChild(mealName);
             dinnerDiv.appendChild(ingredientList);
         }
     })
@@ -153,12 +164,16 @@ function displayDinner(){
 
 function displaySnack(){
     let snackDiv = document.getElementById('snack');
+    snackDiv.innerHTML = "";
     let selectedMeal = document.querySelector('#selected-snack')
     let selectedSnack = selectedMeal.options[selectedMeal.selectedIndex].value
     meals.forEach(meal => {
-        if (meal.name === selectedSnack && meal.ingredients != []) {
+        if (meal.name === selectedSnack) {
             mealName = document.createElement('h4');
-            mealName.innerText = `${meal.name}`;
+            mealName.innerText = `${meal.name}`;  
+            snackDiv.appendChild(mealName); 
+        }
+        if (meal.name === selectedSnack && meal.ingredients !== [] && meal.ingredients !== undefined) {
             ingredientList = document.createElement('ul');
             ingredientList.setAttribute('id', 'snack-ingredient-list')
             meal.ingredients.forEach(ingredient => {
@@ -166,7 +181,6 @@ function displaySnack(){
                 mealIngredient.innerText = `${ingredient.name} - ${ingredient.amount}`
                 ingredientList.appendChild(mealIngredient)
             })
-            snackDiv.appendChild(mealName);
             snackDiv.appendChild(ingredientList);
         }
     })

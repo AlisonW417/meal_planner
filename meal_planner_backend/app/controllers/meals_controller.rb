@@ -9,7 +9,7 @@ class MealsController < ApplicationController
         meal = Meal.new(name: params[:name], category: params[:category])
         meal.save
         # need to refactor this
-        render json: meal
+        render json: meal, include: [:ingredients]
     end 
 
     def update
