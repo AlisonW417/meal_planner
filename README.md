@@ -4,6 +4,8 @@ Priorities:
 - set limit for select meal button to 7 times(1 week of meals)
 - consider refactoring make meals populate as dialy meal cards rather than current table layout -- or change table direction? need to denote day of the week.
 - add ingredients to all seed data (check on null result in grocery list)
+- meal and ingredient form fields on submit
+- refactor meal displays to be more abstract? create separate classes for categories?
 
 Hopes:
 - change ingredient display (allow sorting)
