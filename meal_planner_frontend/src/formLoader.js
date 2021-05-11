@@ -54,6 +54,7 @@ class FormLoader {
         submit.setAttribute('class', 'meal-plan');
         submit.innerText = "Add to meal plan";
         mealPlanForm.appendChild(submit);
+        mealPlanForm.addEventListener('submit', renderMealPlan)
         currentDiv.appendChild(mealPlanForm);
     }
 }

@@ -143,3 +143,8 @@ function renderMealInfo(event){
     FormLoader.loadMealPlanForm(mealInfoDiv);
 }
 
+function renderMealPlan(event) {
+    event.preventDefault();
+    console.log(event);
+}
+
