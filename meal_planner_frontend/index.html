@@ -14,57 +14,68 @@
 
   <body>
     <h1>Meal Planner and Recipe Log</h1>
+    
+    <br>
+    <hr>
+
     <div id="create-meal">
       <h2>Create a New Meal</h2>
-      <form id="new-meal-form">
-        <label for="name">Meal Name:</label>
-        <input type="text" name="name">
-
-        <select id="category" name="category">
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Snack">Snack</option>
-        </select>
-
-        <input type="submit">
+      <form id="new-meal-form" class="form-group">
+        <div class="form-group">
+          <label for="name" class="col-sm-2 col-form-label">Meal Name:</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <select id="category" name="category" class="form-select">
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary">
+      </div>
       </form>
     </div>
+    
+    <hr>
+    <br>
 
     <div id="meal-selectors">
       <h2>Make meal selections to view and add ingredients</h2>
-      <div id="breakfast" class="card mb-3">
+      <div class="card mb-3">
         <label for="breakfast" class="card-header">Breakfast:</label>
-          <div class="card-body">
-            <select id="selected-breakfast" class="selected"></select>
-            <button id="bfast-select">Select</button>
+          <div id="breakfast" class="card-body">
+            <select id="selected-breakfast" class="form-select"></select>
+            <button id="bfast-select" class="btn btn-primary">Select</button>
             <div id="breakfast-display" class="meal-info"></div>
           </div>
       </div>
 
-      <div id="lunch" class="card mb-3">
+      <div class="card mb-3">
         <label for="lunch" class="card-header">Lunch:</label>
-            <div class="card-body">
-            <select id="selected-lunch" class="selected"></select>
-            <button id="lunch-select">Select</button>
+            <div id="lunch" class="card-body">
+            <select id="selected-lunch" class="form-select"></select>
+            <button id="lunch-select" class="btn btn-primary">Select</button>
             <div id="lunch-display" class="meal-info"></div>
           </div>
       </div>
 
-      <div id="dinner" class="card mb-3">
+      <div class="card mb-3">
         <label for="dinner" class="card-header">Dinner:</label>
-          <div class="card-body">
-            <select id="selected-dinner" class="selected"></select>
-            <button id="dinner-select">Select</button>
+          <div id="dinner" class="card-body">
+            <select id="selected-dinner" class="form-select"></select>
+            <button id="dinner-select" class="btn btn-primary">Select</button>
             <div id="dinner-display" class="meal-info"></div>
           </div>
       </div>
 
-      <div id="snack" class="card mb-3">
+      <div class="card mb-3">
         <label for="snack" class="card-header">Snack:</label>
-          <div class="card-body">
-          <select id="selected-snack" class="selected"></select>
-          <button id="snack-select">Select</button>
+          <div id="snack" class="card-body">
+          <select id="selected-snack" class="form-select"></select>
+          <button id="snack-select" class="btn btn-primary">Select</button>
           <div id="snack-display" class="meal-info"></div>
         </div>
       </div>

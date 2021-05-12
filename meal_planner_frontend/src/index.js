@@ -162,7 +162,8 @@ function renderMealPlan(currentMeal, form) {
         let mealDiv = document.getElementById(`${day}-${currentMeal.category.toLowerCase()}`);
         let mealName = document.createElement('h5');
         let removeButton = document.createElement('button');
-        removeButton.innerText = "remove";
+        removeButton.setAttribute('class', 'btn btn-primary')
+        removeButton.innerText = "X";
         removeButton.addEventListener('click', removeMealFromPlan);
         mealName.innerText = `${currentMeal.name}`;
         mealDiv.appendChild(mealName);

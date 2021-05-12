@@ -13,7 +13,7 @@ class FormLoader {
         hidden.setAttribute('name', 'meal');
         hidden.setAttribute('value', currentMeal.id);
         button.setAttribute('type', 'submit');
-        button.setAttribute('class', 'add-ingredient');
+        button.setAttribute('class', 'btn btn-primary');
         button.innerText = "Add";
         nameInput.setAttribute('type', 'text');
         nameInput.setAttribute('name', 'name');
@@ -56,7 +56,7 @@ class FormLoader {
         })
         let submit = document.createElement('button');
         submit.setAttribute('type', 'submit');
-        submit.setAttribute('class', 'meal-plan');
+        submit.setAttribute('class', 'btn btn-primary');
         submit.innerText = "Add to meal plan";
         mealPlanForm.appendChild(submit);
         mealPlanForm.addEventListener('submit', (event) => {
