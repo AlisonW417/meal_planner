@@ -3,24 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Meal Planner</title>
-
-    <style>
-      table, th, td {
-        border: 1px solid black;
-      }
-      div #breakfast {
-        border: 1px solid black;
-      }
-      div #lunch {
-        border: 1px solid black;
-      }
-      div #dinner {
-        border: 1px solid black;
-      }
-      div #snack {
-        border: 1px solid black;
-      }
-    </style>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="src/bootstrap.min.css">
 
     <script type="application/javascript" src="src/formLoader.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/meal.js" charset="UTF-8"></script>
@@ -49,36 +33,45 @@
 
     <div id="meal-selectors">
       <h2>Make meal selections to view and add ingredients</h2>
-      <div id="breakfast">
-        <label for="breakfast">Breakfast:</label>
-        <select id="selected-breakfast" class="selected"></select>
-        <button id="bfast-select">Select</button>
-        <div id="breakfast-display" class="meal-info"></div>
+      <div id="breakfast" class="card mb-3">
+        <label for="breakfast" class="card-header">Breakfast:</label>
+          <div class="card-body">
+            <select id="selected-breakfast" class="selected"></select>
+            <button id="bfast-select">Select</button>
+            <div id="breakfast-display" class="meal-info"></div>
+          </div>
       </div>
 
-      <div id="lunch">
-        <label for="lunch">Lunch:</label>
-        <select id="selected-lunch" class="selected"></select>
-        <button id="lunch-select">Select</button>
-        <div id="lunch-display" class="meal-info"></div>
+      <div id="lunch" class="card mb-3">
+        <label for="lunch" class="card-header">Lunch:</label>
+            <div class="card-body">
+            <select id="selected-lunch" class="selected"></select>
+            <button id="lunch-select">Select</button>
+            <div id="lunch-display" class="meal-info"></div>
+          </div>
       </div>
 
-      <div id="dinner">
-        <label for="dinner">Dinner:</label>
-        <select id="selected-dinner" class="selected"></select>
-        <button id="dinner-select">Select</button>
-        <div id="dinner-display" class="meal-info"></div>
+      <div id="dinner" class="card mb-3">
+        <label for="dinner" class="card-header">Dinner:</label>
+          <div class="card-body">
+            <select id="selected-dinner" class="selected"></select>
+            <button id="dinner-select">Select</button>
+            <div id="dinner-display" class="meal-info"></div>
+          </div>
       </div>
 
-      <div id="snack">
-        <label for="snack">Snack:</label>
-        <select id="selected-snack" class="selected"></select>
-        <button id="snack-select">Select</button>
-        <div id="snack-display" class="meal-info"></div>
+      <div id="snack" class="card mb-3">
+        <label for="snack" class="card-header">Snack:</label>
+          <div class="card-body">
+          <select id="selected-snack" class="selected"></select>
+          <button id="snack-select">Select</button>
+          <div id="snack-display" class="meal-info"></div>
+        </div>
       </div>
     </div>
 
     <br>
+    <hr>
 
     <div id="weekly-menu">
       <div id="sunday-menu">
