@@ -24,6 +24,7 @@ class FormLoader {
         nameLabel.innerText = "Name:";
         amtLabel.innerText = "Amount:";
         formHead.innerText = "Add an ingredient";
+        ingredientForm.setAttribute('id', 'new-ingredient-form');
         ingredientForm.appendChild(formHead);
         ingredientForm.appendChild(nameLabel);
         ingredientForm.appendChild(nameInput);

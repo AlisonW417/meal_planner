@@ -55,8 +55,10 @@ function createNewMeal(event){
     .then(resp => resp.json())
     .then(data => {
         console.log(data);
-        new Meal(data.name, data.category, data.ingredients)
-        meals.push(data)
+        new Meal(data.name, data.category, data.ingredients);
+        meals.push(data);
+        let form = document.getElementById('new-meal-form');
+        form.reset();
         renderMeals();
     })
 }
@@ -86,6 +88,8 @@ function createNewIngredient(event) {
         ingredient.innerText = `${data.name} - ${data.amount}`;
         let list = document.getElementById(`${meal.category.toLowerCase()}-ingredient-list`);
         list.appendChild(ingredient);
+        let form = document.getElementById('new-ingredient-form');
+        form.reset();
     })
 }
 
