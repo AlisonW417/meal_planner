@@ -59,7 +59,7 @@ class FormLoader {
         mealPlanForm.addEventListener('submit', (event) => {
             event.preventDefault();
             let div = event.target.parentElement.id;
-            renderMealPlan(currentMeal, div);
+            renderMealPlan(currentMeal, mealPlanForm);
         });
         currentDiv.appendChild(mealPlanForm);
     }

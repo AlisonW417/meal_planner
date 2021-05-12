@@ -117,6 +117,7 @@ function renderMeals() {
 // RENDER Selected Meal Info to DOM
 function renderMealInfo(event){
     // debugger
+    // let mealSelectDiv = document.getElementById("meal-selectors");
     let parentDiv = document.getElementById(event.target.parentElement.id);
     let mealInfoDiv = event.target.nextElementSibling;
     mealInfoDiv.innerHTML = "";
@@ -143,7 +144,8 @@ function renderMealInfo(event){
     FormLoader.loadMealPlanForm(mealInfoDiv, selectedMeal);
 }
 
-function renderMealPlan(currentMeal, div) {
+function renderMealPlan(currentMeal, form) {
+    // debugger
     let days = [];
     let checkboxes = document.getElementsByClassName('checkbox');
     for (let i=0; i < checkboxes.length; i++) {
@@ -158,6 +160,7 @@ function renderMealPlan(currentMeal, div) {
         mealName.innerText = `${currentMeal.name}`;
         mealDiv.appendChild(mealName);
         dayDiv.appendChild(mealDiv);
+        form.reset();
     })
 }
 
