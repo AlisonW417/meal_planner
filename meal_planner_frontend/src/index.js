@@ -143,7 +143,7 @@ function renderMealInfo(event){
     FormLoader.loadMealPlanForm(mealInfoDiv, selectedMeal);
 }
 
-function renderMealPlan(currentMeal) {
+function renderMealPlan(currentMeal, div) {
     let days = [];
     let checkboxes = document.getElementsByClassName('checkbox');
     for (let i=0; i < checkboxes.length; i++) {
