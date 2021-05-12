@@ -39,12 +39,14 @@ class FormLoader {
     static loadMealPlanForm(currentDiv, selectedMeal){
         let currentMeal = meals.find(meal => {return meal.name === selectedMeal});
         let mealPlanForm = document.createElement('form');
+        let formHead = document.createElement('h5');
+        formHead.innerText = "Select days to add this meal to your Meal Plan";
         let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         days.forEach(day => {
             let input = document.createElement('input');
             let label = document.createElement('label');
             label.setAttribute('for', `${day.toLowerCase()}`);
-            label.innerText = `${day}`;
+            label.innerText = `${day}:`;
             input.setAttribute('type', 'checkbox');
             input.setAttribute('id', `${day.toLowerCase()}`);
             input.setAttribute('class', 'checkbox');
@@ -62,6 +64,7 @@ class FormLoader {
             let div = event.target.parentElement.id;
             renderMealPlan(currentMeal, mealPlanForm);
         });
+        currentDiv.appendChild(formHead);
         currentDiv.appendChild(mealPlanForm);
     }
 }

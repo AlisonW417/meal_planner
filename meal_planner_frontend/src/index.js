@@ -161,10 +161,18 @@ function renderMealPlan(currentMeal, form) {
         let dayDiv = document.getElementById(`${day}-menu`);
         let mealDiv = document.getElementById(`${day}-${currentMeal.category.toLowerCase()}`);
         let mealName = document.createElement('h5');
+        let removeButton = document.createElement('button');
+        removeButton.innerText = "remove";
+        removeButton.addEventListener('click', removeMealFromPlan);
         mealName.innerText = `${currentMeal.name}`;
         mealDiv.appendChild(mealName);
+        mealName.appendChild(removeButton);
         dayDiv.appendChild(mealDiv);
         form.reset();
     })
+}
+
+function removeMealFromPlan(event){
+    event.target.parentElement.remove();
 }
 
