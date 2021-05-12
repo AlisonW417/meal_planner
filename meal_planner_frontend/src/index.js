@@ -140,11 +140,10 @@ function renderMealInfo(event){
         }
     })
     FormLoader.loadIngredientForm(mealInfoDiv, selectedMeal);
-    FormLoader.loadMealPlanForm(mealInfoDiv);
+    FormLoader.loadMealPlanForm(mealInfoDiv, selectedMeal);
 }
 
-function renderMealPlan(event) {
-    event.preventDefault();
+function renderMealPlan(currentMeal) {
     let days = [];
     let checkboxes = document.getElementsByClassName('checkbox');
     for (let i=0; i < checkboxes.length; i++) {
@@ -152,6 +151,13 @@ function renderMealPlan(event) {
             days.push(checkboxes[i].value);
         }
     }
-    console.log(days);
+    days.forEach(day => {
+        let dayDiv = document.getElementById(`${day}-menu`);
+        let mealDiv = document.getElementById(`${day}-${currentMeal.category.toLowerCase()}`);
+        let mealName = document.createElement('h5');
+        mealName.innerText = `${currentMeal.name}`;
+        mealDiv.appendChild(mealName);
+        dayDiv.appendChild(mealDiv);
+    })
 }
 

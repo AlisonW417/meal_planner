@@ -35,7 +35,8 @@ class FormLoader {
         ingredientForm.addEventListener('submit', createNewIngredient);
     }
 
-    static loadMealPlanForm(currentDiv){
+    static loadMealPlanForm(currentDiv, selectedMeal){
+        let currentMeal = meals.find(meal => {return meal.name === selectedMeal});
         let mealPlanForm = document.createElement('form');
         let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         days.forEach(day => {
@@ -55,7 +56,10 @@ class FormLoader {
         submit.setAttribute('class', 'meal-plan');
         submit.innerText = "Add to meal plan";
         mealPlanForm.appendChild(submit);
-        mealPlanForm.addEventListener('submit', renderMealPlan)
+        mealPlanForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            renderMealPlan(currentMeal);
+        });
         currentDiv.appendChild(mealPlanForm);
     }
 }
