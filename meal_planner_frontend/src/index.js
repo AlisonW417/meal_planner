@@ -163,7 +163,7 @@ function renderMealPlan(currentMeal, form) {
         let mealName = document.createElement('p');
         mealName.setAttribute('class', 'card-text');
         let removeButton = document.createElement('button');
-        removeButton.setAttribute('class', 'btn btn-primary')
+        removeButton.setAttribute('class', 'btn btn-danger')
         removeButton.innerText = "X";
         removeButton.addEventListener('click', removeMealFromPlan);
         mealName.innerText = "";
