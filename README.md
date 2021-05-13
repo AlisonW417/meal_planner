@@ -1,4 +1,5 @@
 NEXT TIME: finish style video?
+
 Priorities:
 - double check rails controller code for create
 - add ingredients to all seed data (check on null result in grocery list)

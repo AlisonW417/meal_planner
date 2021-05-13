@@ -6,8 +6,11 @@ class IngredientsController < ApplicationController
     
     def create 
         ingredient = Ingredient.new(name: params[:name], amount: params[:amount], meal_id: params[:meal_id])
-        ingredient.save
-        render json: ingredient
+        if ingredient.save 
+            render json: ingredient
+        else 
+            render json: { message: ingredient.errors.full_messages.join(". ") }
+        end
     end 
 
     # def destroy

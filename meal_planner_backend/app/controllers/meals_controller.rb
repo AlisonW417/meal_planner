@@ -7,9 +7,14 @@ class MealsController < ApplicationController
     def create 
         # raise params
         meal = Meal.new(name: params[:name], category: params[:category])
-        meal.save
+        if meal.save
+            render json: meal, include: [:ingredients]
+        else 
+            render json: { message: meal.errors.full_messages[0] }
+        end 
+        
         # need to refactor this
-        render json: meal, include: [:ingredients]
+        
     end 
 
     def update
