@@ -39,6 +39,8 @@ class FormLoader {
     static loadMealPlanForm(currentDiv, selectedMeal){
         let currentMeal = meals.find(meal => {return meal.name === selectedMeal});
         let mealPlanForm = document.createElement('form');
+        let formDiv = document.createElement('div');
+        formDiv.setAttribute('class', 'form-check');
         let formHead = document.createElement('h5');
         formHead.innerText = "Select days to add this meal to your Meal Plan";
         let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -46,20 +48,21 @@ class FormLoader {
             let input = document.createElement('input');
             let label = document.createElement('label');
             label.setAttribute('for', `${day.toLowerCase()}`);
-            label.setAttribute('class', 'form-check-label')
-            label.innerText = `${day}:`;
+            label.setAttribute('class', 'form-check-label');
+            label.innerText = `${day}`;
             input.setAttribute('type', 'checkbox');
             input.setAttribute('id', `${day.toLowerCase()}`);
             input.setAttribute('class', 'form-check-input');
             input.setAttribute('value', `${day.toLowerCase()}`);
-            mealPlanForm.appendChild(label);
             mealPlanForm.appendChild(input);
+            mealPlanForm.appendChild(label);
         })
         let submit = document.createElement('button');
         submit.setAttribute('type', 'submit');
         submit.setAttribute('class', 'btn btn-primary');
         submit.innerText = "Add to meal plan";
         mealPlanForm.appendChild(submit);
+        mealPlanForm.appendChild(formDiv);
         mealPlanForm.addEventListener('submit', (event) => {
             event.preventDefault();
             let div = event.target.parentElement.id;
