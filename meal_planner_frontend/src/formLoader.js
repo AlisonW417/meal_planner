@@ -46,10 +46,11 @@ class FormLoader {
             let input = document.createElement('input');
             let label = document.createElement('label');
             label.setAttribute('for', `${day.toLowerCase()}`);
+            label.setAttribute('class', 'form-check-label')
             label.innerText = `${day}:`;
             input.setAttribute('type', 'checkbox');
             input.setAttribute('id', `${day.toLowerCase()}`);
-            input.setAttribute('class', 'checkbox');
+            input.setAttribute('class', 'form-check-input');
             input.setAttribute('value', `${day.toLowerCase()}`);
             mealPlanForm.appendChild(label);
             mealPlanForm.appendChild(input);

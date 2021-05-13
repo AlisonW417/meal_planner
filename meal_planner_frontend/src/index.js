@@ -151,7 +151,7 @@ function renderMealInfo(event){
 function renderMealPlan(currentMeal, form) {
     // debugger
     let days = [];
-    let checkboxes = document.getElementsByClassName('checkbox');
+    let checkboxes = document.getElementsByClassName('form-check-input');
     for (let i=0; i < checkboxes.length; i++) {
         if(checkboxes[i].checked){
             days.push(checkboxes[i].value);
@@ -160,11 +160,13 @@ function renderMealPlan(currentMeal, form) {
     days.forEach(day => {
         let dayDiv = document.getElementById(`${day}-menu`);
         let mealDiv = document.getElementById(`${day}-${currentMeal.category.toLowerCase()}`);
-        let mealName = document.createElement('h5');
+        let mealName = document.createElement('p');
+        mealName.setAttribute('class', 'card-text');
         let removeButton = document.createElement('button');
         removeButton.setAttribute('class', 'btn btn-primary')
         removeButton.innerText = "X";
         removeButton.addEventListener('click', removeMealFromPlan);
+        mealName.innerText = "";
         mealName.innerText = `${currentMeal.name}`;
         mealDiv.appendChild(mealName);
         mealName.appendChild(removeButton);
