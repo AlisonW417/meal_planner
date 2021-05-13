@@ -158,8 +158,12 @@ function renderMealInfo(event){
 
 function renderMealPlan(currentMeal, form) {
     // debugger
+    // create a variable and set it equal to an empty array
     let days = [];
+    // select the checkbox elements using their class name attribute
     let checkboxes = document.getElementsByClassName('form-check-input');
+    // iterate through the form checkboxes to determine which days are checked
+    // add each checked value (day) to the days array
     for (let i=0; i < checkboxes.length; i++) {
         if(checkboxes[i].checked){
             days.push(checkboxes[i].value);
