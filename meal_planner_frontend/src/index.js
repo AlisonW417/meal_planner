@@ -178,8 +178,8 @@ function renderMealPlan(currentMeal, form) {
         mealName.innerText = `${currentMeal.name}`;
         mealDiv.appendChild(mealName);
         mealName.appendChild(removeButton);
-        dayDiv.appendChild(mealDiv);
         form.reset();
+        // dayDiv.appendChild(mealDiv);
     })
 }
 
