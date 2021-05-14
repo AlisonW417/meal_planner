@@ -169,19 +169,27 @@ function renderMealPlan(currentMeal, form) {
             days.push(checkboxes[i].value);
         }
     }
+
     days.forEach(day => {
         let dayDiv = document.getElementById(`${day}-menu`);
+        // use interpolation to select the current meal's div by category
         let mealDiv = document.getElementById(`${day}-${currentMeal.category.toLowerCase()}`);
+        // create elements to display the meal's name and to remove the meal, if needed
         let mealName = document.createElement('p');
         mealName.setAttribute('class', 'card-text');
         let removeButton = document.createElement('button');
-        removeButton.setAttribute('class', 'btn btn-danger')
-        removeButton.innerText = "X";
+        removeButton.setAttribute('class', 'btn btn-danger btn-sm')
+        removeButton.innerText = "x";
+        // add an event listener for the option to remove the meal from the menu
         removeButton.addEventListener('click', removeMealFromPlan);
+        // reset the name to prevent duplicates during selection
         mealName.innerText = "";
+        // add the current meal's name and the remove button to the selected div
         mealName.innerText = `${currentMeal.name}`;
-        mealDiv.appendChild(mealName);
         mealName.appendChild(removeButton);
+        mealDiv.appendChild(mealName);
+        
+        // reset the form
         form.reset();
         // dayDiv.appendChild(mealDiv);
     })
