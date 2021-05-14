@@ -40,7 +40,7 @@ class FormLoader {
         formDiv.appendChild(formHead);
         formDiv.appendChild(ingredientForm);
         currentDiv.appendChild(formDiv);
-        ingredientForm.addEventListener('submit', createNewIngredient);
+        ingredientForm.addEventListener('submit', AppAdapter.createNewIngredient);
     }
 
     static loadMealPlanForm(currentDiv, selectedMeal){
