@@ -1,5 +1,4 @@
 class AppAdapter {
-
     // READ MEALS
     static getMeals() {
         fetch(`${url}/meals`)

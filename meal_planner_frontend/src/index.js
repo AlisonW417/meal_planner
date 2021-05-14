@@ -1,6 +1,3 @@
-// const app = new AppContainer
-// app.getMeals()
-// app.bindEventListeners()
 const url = 'http://localhost:3000';
 const meals = [];
 
