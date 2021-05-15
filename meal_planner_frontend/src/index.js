@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     AppAdapter.getMeals()
 
-    const bfastSelect = document.getElementById("bfast-select");
+    const bfastSelect = document.getElementById("selected-breakfast");
     bfastSelect.addEventListener('click', renderMealInfo);
 
     const lunchSelect = document.getElementById("lunch-select");
