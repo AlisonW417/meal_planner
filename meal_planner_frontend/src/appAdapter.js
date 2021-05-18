@@ -10,6 +10,7 @@ class AppAdapter {
             })
         renderMeals();
         })
+        .catch(error => console.log(error.message))
     }
 
     // CREATE MEAL
@@ -39,6 +40,7 @@ class AppAdapter {
                 renderMeals();
             }
         })
+        .catch(error => console.log(error.message))
     }
 
     // CREATE INGREDIENT
@@ -72,5 +74,6 @@ class AppAdapter {
                 form.reset();
             }
         })
+        .catch(error => console.log(error.message))
     }
 }
