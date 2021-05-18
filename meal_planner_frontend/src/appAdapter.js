@@ -28,7 +28,7 @@ class AppAdapter {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if (data.message) {
                 alert(data.message)
             } else {
@@ -58,7 +58,7 @@ class AppAdapter {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if (data.message) {
                 alert(data.message)
             } else {

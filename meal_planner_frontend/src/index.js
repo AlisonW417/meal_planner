@@ -2,7 +2,7 @@ const url = 'http://localhost:3000';
 const meals = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM is Loaded");
+    // console.log("DOM is Loaded");
 
     const newMealForm = document.getElementById("new-meal-form");
     newMealForm.addEventListener('submit', AppAdapter.createNewMeal);
@@ -49,9 +49,12 @@ function renderMeals() {
 
 // RENDER Selected Meal Info to DOM
 function renderMealInfo(event){
-    let parentDiv = document.getElementById(event.target.parentElement.id);
+    // select breakfast, lunch, dinner or snack div
+    let parentDiv = document.getElementById(event.target.parentElement.id); 
+    // select div where meal info will be displayed
     let mealInfoDiv = event.target.nextElementSibling;
     mealInfoDiv.innerHTML = "";
+    // find the selected meal's name from the select element
     let selectedMeal = event.target.previousElementSibling.value;
     meals.forEach(meal => {
         if (meal.name === selectedMeal) {
@@ -86,7 +89,7 @@ function renderMealPlan(currentMeal, form) {
     }
 
     days.forEach(day => {
-        let dayDiv = document.getElementById(`${day}-menu`);
+        // let dayDiv = document.getElementById(`${day}-menu`);
         let mealDiv = document.getElementById(`${day}-${currentMeal.category.toLowerCase()}`);
         let mealName = document.createElement('p');
         mealName.setAttribute('class', 'card-text');
@@ -107,4 +110,3 @@ function renderMealPlan(currentMeal, form) {
 function removeMealFromPlan(event){
     event.target.parentElement.remove();
 }
-
